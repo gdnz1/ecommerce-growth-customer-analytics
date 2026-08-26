@@ -7,7 +7,9 @@ if sys.platform == "win32":
     sys.stderr.reconfigure(encoding="utf-8")
 
 import pandas as pd
+# pyrefly: ignore [missing-import]
 from sqlalchemy import create_engine, text
+# pyrefly: ignore [missing-import]
 from dotenv import load_dotenv
 
 # 1. .env dosyasındaki ortam değişkenlerini yükle
