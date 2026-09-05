@@ -45,7 +45,7 @@ ORDER BY total_revenue DESC
 
 
 WITH seller_revenue AS (
-    -- DİKKAT: order_items ile başlayarak Primary Key indeksinden faydalanıyoruz!
+    -- satıcıların toplam siparişlerini ve toplam cirolarını yazdırıyoruz
     SELECT
         oi.seller_id,
         COUNT(DISTINCT oi.order_id) AS total_orders,
@@ -57,6 +57,7 @@ WITH seller_revenue AS (
     GROUP BY oi.seller_id
 )
 SELECT
+    -- cirolarına oranla satıcıları hem ulusal düzeyde hem de eyalet düzeyinde sıralıyoruz
     sr.seller_id,
     s.seller_state,
     sr.total_orders,
@@ -66,4 +67,5 @@ SELECT
 FROM seller_revenue sr
 JOIN sellers s 
     ON sr.seller_id = s.seller_id
-ORDER BY total_revenue DESC;
+ORDER BY total_revenue DESC
+;
